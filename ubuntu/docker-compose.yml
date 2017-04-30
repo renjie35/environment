@@ -1,0 +1,57 @@
+version: "2"
+services:
+  ubuntu:
+    build: ./dockerfile/ubuntu
+    ports: 
+      - "22:22"
+    volumes:
+      - ./supervisor:/etc/supervisor/conf.d #进程管理配置
+    command: "/usr/bin/supervisord" #初始调用supervisor
+    container_name: ubuntu
+
+
+  php:
+    build: ./dockerfile/php
+    volumes:
+      - /c/PHP/WORKSPACE/DATA:/var/www/html #站点目录
+      - ./php:/usr/local/etc/php/conf.d #配置文件
+    links:
+      - mysql
+      - redis
+    container_name: php
+
+
+  nginx:
+    image: hub.c.163.com/library/nginx:latest
+    ports: 
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /c/PHP/WORKSPACE/DATA:/var/www/html #站点目录
+      - ./nginx/conf:/etc/nginx/conf.d #配置文件
+    links:
+      - php
+      - redis
+    container_name: nginx
+
+
+  mysql:
+    image: hub.c.163.com/library/mysql:latest
+    ports: 
+      - "3306:3306"
+    volumes:
+      - /c/PHP/WORKSPACE/DATA/Mysql:/var/lib/mysql #持久化存储
+      - ./mysql:/etc/mysql/conf.d #配置文件
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=dell_456
+
+      
+  redis:
+    image: hub.c.163.com/library/redis:latest
+    ports: 
+      - "6379:6379"
+    volumes:
+      - /c/PHP/WORKSPACE/DATA/Redis:/var/www/html/Redis #持久化存储
+      - ./redis:/usr/local/etc/redis #配置文件
+    container_name: redis
