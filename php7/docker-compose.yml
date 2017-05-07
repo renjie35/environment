@@ -13,7 +13,7 @@ services:
   php:
     build: ./dockerfile/php
     volumes:
-      - /c/PHP/WORKSPACE/DATA:/var/www/html #站点目录
+      - ./../../DATA:/var/www/html #站点目录
       - ./php:/usr/local/etc/php/conf.d #配置文件
     links:
       - mysql
@@ -27,7 +27,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /c/PHP/WORKSPACE/DATA:/var/www/html #站点目录
+      - ./../../DATA:/var/www/html #站点目录
       - ./nginx/conf:/etc/nginx/conf.d #配置文件
     links:
       - php
@@ -40,7 +40,7 @@ services:
     ports: 
       - "3306:3306"
     volumes:
-      - /c/PHP/WORKSPACE/DATA/Mysql:/var/lib/mysql #持久化存储
+      - ./../../DATA/Mysql:/var/lib/mysql #持久化存储
       - ./mysql:/etc/mysql/conf.d #配置文件
     container_name: mysql
     environment:
@@ -52,6 +52,6 @@ services:
     ports: 
       - "6379:6379"
     volumes:
-      - /c/PHP/WORKSPACE/DATA/Redis:/var/www/html/Redis #持久化存储
+      - ./../../DATA/Redis:/var/www/html/redis #持久化存储
       - ./redis:/usr/local/etc/redis #配置文件
     container_name: redis
