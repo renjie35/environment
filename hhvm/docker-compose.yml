@@ -1,15 +1,5 @@
 version: "2"
 services:
-  ubuntu:
-    build: ./dockerfile/ubuntu
-    ports: 
-      - "22:22"
-    volumes:
-      - ./supervisor:/etc/supervisor/conf.d #进程管理配置
-    command: "/usr/bin/supervisord" #初始调用supervisor
-    container_name: ubuntu
-
-
   php:
     image: diegomarangoni/hhvm
     ports:
@@ -25,7 +15,7 @@ services:
 
 
   nginx:
-    image: hub.c.163.com/library/nginx:latest
+    image: hub.c.163.com/library/nginx:1.13.0-alpine
     ports: 
       - "80:80"
       - "443:443"
@@ -51,7 +41,7 @@ services:
 
       
   redis:
-    image: hub.c.163.com/library/redis:latest
+    image: hub.c.163.com/library/redis:3.2.6-alpine
     ports: 
       - "6379:6379"
     volumes:
