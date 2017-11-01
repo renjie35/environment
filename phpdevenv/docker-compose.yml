@@ -1,0 +1,26 @@
+version: "2"
+services:
+  nginx:
+    container_name: dev
+    image: registry.cn-hangzhou.aliyuncs.com/mustanggu/docker-images:7.1.6-nginx-tools
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      # 代码目录
+      - ./www:/data/www
+      # nginx配置目录
+      - ./config/nginx:/etc/nginx
+      # php.ini配置目录
+      - ./config/php:/usr/local/etc
+      # composer
+      - ./config/composer:/usr/local/bin/composer
+      # supervisor配置
+      - ./config/supervisor/conf.d:/etc/supervisor/conf.d
+      # crontab配置
+      - ./config/crontab:/etc/crontabs
+      # 日志目录
+      - ./logs:/logs
+    extra_hosts:
+      # hosts 配置
+     - "phpinfo.localhost.com:127.0.0.1"

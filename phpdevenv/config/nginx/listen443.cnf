@@ -1,0 +1,7 @@
+    listen 443;
+    ssl on;
+    #请自行将crt和pem的证书文件放到当前目录中
+    #然后修改下面两行配置项,将xxx替换成实际的证书文件名称
+    ssl_certificate  xxx.crt;
+    ssl_certificate_key  xxx.pem;
+    ssl_protocols  SSLv3 TLSv1 TLSv1.1 TLSv1.2;
