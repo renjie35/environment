@@ -2,7 +2,7 @@ version: "2"
 services:
   nginx:
     container_name: dev
-    image: registry.cn-hangzhou.aliyuncs.com/mustanggu/docker-images:7.1.6-nginx-tools
+    image: registry.cn-hangzhou.aliyuncs.com/jren/php:7.1.6-nginx-alpine
     ports:
       - "80:80"
       - "443:443"
