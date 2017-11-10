@@ -1,0 +1,17 @@
+version: "2"
+services:
+    storm:
+      container_name: centos
+      image: registry.cn-hangzhou.aliyuncs.com/jren/zookeeper:7.4-centos
+      ports:
+        - "2181:2181"
+        - "3181:3181"
+      volumes:
+        # 临时目录用于调试
+        - ./:/app
+        # zookeeper配置
+        - ./conf/zookeeper:/app/zookeeper/zookeeper-3.5.2-alpha/conf
+        # 日志目录
+        - ./logs:/logs
+      command: sh /app/start.sh
+      tty: true

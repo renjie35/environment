@@ -1,0 +1,11 @@
+version: "2"
+services:
+    storm:
+      container_name: storm
+      image: alpine:3.6
+      ports:
+        - "1017:1017"
+      volumes:
+        # 临时目录用于调试
+        - ./:/app
+      command: /app/IntelliJIDEALicenseServer/IntelliJIDEALicenseServer_linux_amd64 -h
