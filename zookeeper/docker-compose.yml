@@ -1,7 +1,7 @@
 version: "2"
 services:
-    storm:
-      container_name: centos
+    zookeeper:
+      container_name: zookeeper
       image: registry.cn-hangzhou.aliyuncs.com/jren/zookeeper:7.4-centos
       ports:
         - "2181:2181"
