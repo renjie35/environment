@@ -8,10 +8,9 @@ services:
         - "3181:3181"
       volumes:
         # 临时目录用于调试
-        - ./:/app
+        - ./:/local
         # zookeeper配置
         - ./conf/zookeeper:/app/zookeeper/zookeeper-3.5.2-alpha/conf
         # 日志目录
         - ./logs:/logs
-      command: sh /app/start.sh
       tty: true
