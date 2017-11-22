@@ -1,1 +1,0 @@
-2017/11/01 16:54:48 [error] 16#16: *1 open() "/data/www/phpinfo.localhost.com/favicon.ico" failed (2: No such file or directory), client: 172.18.0.1, server: phphinfo.locahost.com, request: "GET /favicon.ico HTTP/1.1", host: "phpinfo.localhost.com", referrer: "http://phpinfo.localhost.com/"

@@ -1,0 +1,8 @@
+
+phpdevenv/logs/
+
+phpdevenv/www/sec\.localhost\.com/
+
+*.conf
+
+*.log
