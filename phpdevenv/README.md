@@ -213,3 +213,4 @@
     
     可以查看当前队列消费进程的状态,状态为RUNNING说明队列消费进程正常启动并运行中,此时supervisor会维持该进程的运行,任何非正常退出该进程或kill该进程,supervisor都会自动重启进程.
 
+    > ps:docker-php-ext-opcache.ini 缓存配置文件
